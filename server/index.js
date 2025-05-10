@@ -26,7 +26,7 @@ app.post("/webhook", (req, res) => {
     const payload = req.body;
 
     // Проверяем, что это push-эвент
-    if (payload.ref === "refs/heads/main") {
+    if (payload.ref === "refs/heads/master") {
         console.log("Получен push, выполняю обновление...");
 
         // Выполняем команды pull и перезапуск сервера

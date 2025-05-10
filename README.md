@@ -30,5 +30,3 @@ npm run start:prod
 ## 📌 Om prosjektet
 
 Dette prosjektet er en moderne nettside for At Work Systems, bygget med React (Frontend) og Node.js (Backend).
-
-✨ Designet har et mørkt, minimalistisk tema som fremhever produkter og inkluderer interaktive spørreundersøkelser og flytskjemaer.
