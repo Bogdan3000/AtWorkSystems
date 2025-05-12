@@ -7,70 +7,17 @@
         <meta name="author" content="" />
         <title>At Work Systems</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="../css/styles.css" rel="stylesheet" />
+        <script src="/js/navbar-and-footer.js"></script>
     </head>
     <body class="d-flex flex-column h-100">
         <main class="flex-shrink-0">
             <!-- Navigation-->
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="container px-5">
-                    <a class="navbar-brand" href="../index.html">At Work Systems</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdownKonsepter" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Konsepter</a>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                                    <li><a class="dropdown-item" href="../pages/konsepter_1.html">Sammenheng mellom salg og innkjøp</a></li>
-                                    <li><a class="dropdown-item" href="../pages/konsepter_2.html">Prosjekter og produksjon</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdownProdukter" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Produkter</a>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                                    <li><a class="dropdown-item" href="../pages/produkter_1.html">Leverandørfakturaer</a></li>
-                                    <li><a class="dropdown-item" href="../pages/produkter_2.html">Innkjøp</a></li>
-                                    <li><a class="dropdown-item" href="../pages/produkter_3.html">Optimalisering av innkjøp</a></li>
-                                    <li><a class="dropdown-item" href="../pages/produkter_4.html">Ordre, salg, faktura</a></li>
-                                    <li><a class="dropdown-item" href="../pages/produkter_5.html">Prosjektstyring</a></li>
-                                    <li><a class="dropdown-item" href="../pages/produkter_6.html">Timeregistrering og rotasjonsplan</a></li>
-                                    <li><a class="dropdown-item" href="../pages/produkter_7.html">Dokumentstyring og arkiv</a></li>
-                                    <li><a class="dropdown-item" href="../pages/produkter_8.html">Reiseregninger</a></li>
-                                    <li><a class="dropdown-item" href="../pages/produkter_9.html">PEPPOL-tjenester</a></li>
-                                    <li><a class="dropdown-item" href="../pages/produkter_10.html">HMS- og kvalitetsavvik</a></li>
-                                    <li><a class="dropdown-item" href="../pages/produkter_11.html">Forsikringsoppgjør</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdownTjenester" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tjenester</a>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                                    <li><a class="dropdown-item" href="../pages/tjenester_1.html">Produktstøtte og support</a></li>
-                                    <li><a class="dropdown-item" href="../pages/tjenester_2.html">Opplæring</a></li>
-                                    <li><a class="dropdown-item" href="../pages/tjenester_3.html">Prosjektplanlegging og gjennomføring</a></li>
-                                    <li><a class="dropdown-item" href="../pages/tjenester_4.html">Oracle APEX-tjenester</a></li>
-                                    <li><a class="dropdown-item" href="../pages/tjenester_5.html">SAP konsulent</a></li>
-                                    <li><a class="dropdown-item" href="../pages/tjenester_6.html">Integrasjoner og grensesnitt</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item"><a class="nav-link" href="../pages/partnere.html">Partnere</a></li>
-                            <li class="nav-item"><a class="nav-link" href="../pages/about.html">Om oss</a></li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdownMore" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">More</a>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                                    <li><a class="dropdown-item" href="../pages/more_1.html">Kontakt oss</a></li>
-                                    <li><a class="dropdown-item" href="../pages/more_2.html">Blogg</a></li>
-                                    <li><a class="dropdown-item" href="../pages/more_3.html">Søkeresultater</a></li>
-                                    <li><a class="dropdown-item" href="../pages/more_4.html">Shop</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+            <div id="navbar"></div>
             <!-- Header-->
             <header class="bg-dark py-5">
                 <div class="container px-5">
@@ -237,23 +184,10 @@
             </section>
         </main>
         <!-- Footer-->
-        <footer class="bg-dark py-4 mt-auto">
-            <div class="container px-5">
-                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                    <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; At Work Systems AS 2025</div></div>
-                    <div class="col-auto">
-                        <a class="link-light small" href="#!">Privacy</a>
-                        <span class="text-white mx-1">&middot;</span>
-                        <a class="link-light small" href="#!">Terms</a>
-                        <span class="text-white mx-1">&middot;</span>
-                        <a class="link-light small" href="#!">Admin</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        <div id="footer"></div>
         <!-- Bootstrap core JS-->
-        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script src="/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="../js/scripts.js"></script>
+        <script src="/js/scripts.js"></script>
     </body>
 </html>
