@@ -40,5 +40,5 @@ app.post('/webhook', express.json(), (req, res) => {
 // Запуск сервера
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Сервер запущен на http://0.0.0.0:${PORT}`);
+    console.log(`Server started at http://0.0.0.0:${PORT}`);
 });
