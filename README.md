@@ -22,7 +22,7 @@ npm install
 
 4. Start prosjektet:
 ```bash
-npm start
+npm run start:pm2
 ```
 
 ## 📌 Om prosjektet
