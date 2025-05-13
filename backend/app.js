@@ -22,7 +22,7 @@ app.get('/api/hello', (req, res) => {
 app.post('/webhook', express.json(), (req, res) => {
     const branch = req.body.ref;
     if (branch === 'refs/heads/master') {
-        exec('git pull && npm install && npm start', (error, stdout, stderr) => {
+        exec('git pull && npm install && pm2 restart app', (error, stdout, stderr) => {
             if (error) {
                 console.error(`Error executing command: ${error.message}`);
                 return res.status(500).json({ message: "Error executing command", error: error.message });
