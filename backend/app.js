@@ -5,12 +5,17 @@ const path = require('path');
 const { exec } = require('child_process');
 const app = express();
 
-// Настройка статики (исправленный путь)
+// Настройка статики
 app.use(express.static(path.join(__dirname, '../frontend')));
 
 // Маршрут главной страницы
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
+});
+
+// Маршрут страницы контактов
+app.get('/pages/contact-us.html', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/pages', 'contact-us.html'));
 });
 
 // Маршрут API

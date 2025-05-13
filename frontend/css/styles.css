@@ -71,6 +71,7 @@
   --bs-highlight-bg: #fff3cd;
 }
 
+/* Existing styles remain unchanged */
 *,
 *::before,
 *::after {
@@ -82,7 +83,6 @@
     scroll-behavior: smooth;
   }
 }
-/* Inherit existing Bootstrap styles */
 
 /* Main Navigation Styles */
 .main-nav {
@@ -200,6 +200,47 @@
   transform: translateY(-1px);
 }
 
+/* Contact Form Styles */
+.admin-form .form-control {
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.admin-form .form-control:focus {
+  border-color: var(--bs-primary);
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  transform: scale(1.02);
+}
+
+.admin-form .form-label {
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.admin-form .invalid-feedback {
+  font-size: 0.8rem;
+  color: var(--bs-danger);
+}
+
+.admin-form select[multiple] {
+  height: auto;
+  padding: 0.5rem;
+}
+
+.admin-form select[multiple] option {
+  padding: 0.3rem 0.5rem;
+  cursor: pointer;
+}
+
+.admin-form select[multiple] option:hover {
+  background-color: var(--bs-light);
+}
+
+/* Animation for form elements */
+.animate__animated.animate__fadeInUp {
+  animation-duration: 0.5s;
+}
+
 /* Wrapper to ensure footer sticks to bottom */
 .wrapper {
   min-height: calc(100vh - 56px);
@@ -232,6 +273,10 @@
   .main-content {
     padding: 0.75rem;
   }
+
+  .admin-form .form-control {
+    font-size: 0.9rem;
+  }
 }
 
 /* Minimalistic typography */
@@ -244,6 +289,8 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* Existing Bootstrap styles */
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);
@@ -5721,6 +5768,7 @@ textarea.form-control-lg {
   height: var(--bs-tooltip-arrow-height);
 }
 .tooltip .tooltip-arrow::before {
+  border-bottom-color: var(--bs-dark);
   position: absolute;
   content: "";
   border-color: transparent;
@@ -5778,6 +5826,7 @@ textarea.form-control-lg {
   text-align: center;
   background-color: var(--bs-tooltip-bg);
   border-radius: var(--bs-tooltip-border-radius);
+
 }
 
 .popover {
