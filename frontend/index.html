@@ -1,256 +1,179 @@
 <!DOCTYPE html>
-<html lang="no">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>At Work Systems</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./css/styles.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/flag-icons@6.6.6/css/flag-icons.min.css" rel="stylesheet">
-    <script src="./js/components.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="./css/styles.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/flag-icons@6.6.6/css/flag-icons.min.css" rel="stylesheet"/>
+    <script src="./js/i18n.js" defer></script>
+    <script src="./js/components.js" defer></script>
 </head>
 <body>
-<!-- Top Navigation -->
 <div id="navbar"></div>
 
-<!-- Main Layout -->
 <div class="container-fluid wrapper">
-    <!-- Main Navigation Cards Below Header -->
     <div class="main-nav d-flex justify-content-center align-items-center bg-light border-bottom">
-        <div class="nav-card" data-section="salg">
-            <i class="fas fa-shopping-cart me-1"></i>
-            <span data-i18n="salg">Salg</span>
-        </div>
-        <div class="nav-card" data-section="innkjop">
-            <i class="fas fa-cart-plus me-1"></i>
-            <span data-i18n="innkjop">Innkjøp</span>
-        </div>
-        <div class="nav-card" data-section="produksjon">
-            <i class="fas fa-industry me-1"></i>
-            <span data-i18n="produksjon">Produksjon</span>
-        </div>
-        <div class="nav-card" data-section="ressurser">
-            <i class="fas fa-cubes me-1"></i>
-            <span data-i18n="ressurser">Ressurser</span>
-        </div>
-        <div class="nav-card" data-section="lager">
-            <i class="fas fa-warehouse me-1"></i>
-            <span data-i18n="lager">Lager</span>
-        </div>
-        <div class="nav-card" data-section="personel">
-            <i class="fas fa-users me-1"></i>
-            <span data-i18n="personel">Personel</span>
-        </div>
+        <div class="nav-card" data-section="sales"><i class="fas fa-shopping-cart me-1"></i> <span data-i18n="sales.title">Sales</span></div>
+        <div class="nav-card" data-section="purchasing"><i class="fas fa-cart-plus me-1"></i> <span data-i18n="purchasing.title">Purchasing</span></div>
+        <div class="nav-card" data-section="production"><i class="fas fa-industry me-1"></i> <span data-i18n="production.title">Production</span></div>
+        <div class="nav-card" data-section="resources"><i class="fas fa-cubes me-1"></i> <span data-i18n="resources.title">Resources</span></div>
+        <div class="nav-card" data-section="inventory"><i class="fas fa-warehouse me-1"></i> <span data-i18n="inventory.title">Inventory</span></div>
+        <div class="nav-card" data-section="personnel"><i class="fas fa-users me-1"></i> <span data-i18n="personnel.title">Personnel</span></div>
     </div>
 
     <div class="row flex-grow-1">
-        <!-- Left Sidebar for Subsections -->
         <div class="col-md-2 sidebar p-2">
-            <div id="sidebar-content" class="sidebar-content">
-                <!-- Dynamic content will be inserted here -->
-            </div>
+            <div id="sidebar-content" class="sidebar-content"></div>
         </div>
-
-        <!-- Main Content Area -->
         <div class="col-md-10 main-content p-3">
             <div class="container">
-                <div id="main-content-area">
-                    <div class="row" id="salg-content">
-                        <div class="col-md-12">
-                            <h2 data-i18n="salg">Salg</h2>
-                            <p data-i18n="salg_description"></p>
-                        </div>
-                    </div>
-                </div>
+                <div id="main-content-area"></div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Footer -->
 <div id="footer"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        let translations = {};
-        let currentLang = localStorage.getItem('language') || 'nob'; // Default to Norwegian
-
-        // Function to load translations
-        const loadTranslations = async (lang) => {
-            try {
-                const response = await fetch(`/lang/${lang}.json`);
-                translations = await response.json();
-                applyTranslations();
-            } catch (error) {
-                console.error('Error loading translations:', error);
+    const sections = {
+        sales: {
+            title: 'sales.title',
+            subsections: {
+                marketing: { title: 'sales.marketing.title', file: '/content/sales/marketing.html' },
+                prospects: { title: 'sales.prospects.title', file: '/content/sales/prospects.html' },
+                crm: { title: 'sales.crm.title', file: '/content/sales/crm.html' },
+                inquiry: { title: 'sales.inquiry.title', file: '/content/sales/inquiry.html' },
+                offers: { title: 'sales.offers.title', file: '/content/sales/offers.html' },
+                kpi: { title: 'sales.kpi.title', file: '/content/sales/kpi.html' },
+                orders: { title: 'sales.orders.title', file: '/content/sales/orders.html' },
+                contact: { title: 'sales.contact.title', file: '/content/sales/contact.html' }
             }
-        };
+        },
+        purchasing: {
+            title: 'purchasing.title',
+            subsections: {
+                audits: { title: 'purchasing.audits.title', file: '/content/purchasing/audits.html' },
+                orders: { title: 'purchasing.orders.title', file: '/content/purchasing/orders.html' },
+                confirmation: { title: 'purchasing.confirmation.title', file: '/content/purchasing/confirmation.html' },
+                suppliers: { title: 'purchasing.suppliers.title', file: '/content/purchasing/suppliers.html' },
+                misc: { title: 'purchasing.misc.title', file: '/content/purchasing/misc.html' },
+                kpi: { title: 'purchasing.kpi.title', file: '/content/purchasing/kpi.html' }
+            }
+        },
+        production: {
+            title: 'production.title',
+            subsections: {
+                projects: { title: 'production.projects.title', file: '/content/production/projects.html' },
+                hse: { title: 'production.hse.title', file: '/content/production/hse.html' },
+                kpi: { title: 'production.kpi.title', file: '/content/production/kpi.html' },
+                surveys: { title: 'production.surveys.title', file: '/content/production/surveys.html' },
+                transport: { title: 'production.transport.title', file: '/content/production/transport.html' }
+            }
+        },
+        resources: {
+            title: 'resources.title',
+            subsections: {
+                planning: { title: 'resources.planning.title', file: '/content/resources/planning.html' },
+                vehicles: { title: 'resources.vehicles.title', file: '/content/resources/vehicles.html' },
+                properties: { title: 'resources.properties.title', file: '/content/resources/properties.html' }
+            }
+        },
+        inventory: {
+            title: 'inventory.title',
+            subsections: {
+                goods: { title: 'inventory.goods.title', file: '/content/inventory/goods.html' },
+                receipt: { title: 'inventory.receipt.title', file: '/content/inventory/receipt.html' },
+                freight: { title: 'inventory.freight.title', file: '/content/inventory/freight.html' },
+                picklist: { title: 'inventory.picklist.title', file: '/content/inventory/picklist.html' },
+                overview: { title: 'inventory.overview.title', file: '/content/inventory/overview.html' }
+            }
+        },
+        personnel: {
+            title: 'personnel.title',
+            subsections: {
+                time: { title: 'personnel.time.title', file: '/content/personnel/time.html' },
+                logbook: { title: 'personnel.logbook.title', file: '/content/personnel/logbook.html' },
+                employees: { title: 'personnel.employees.title', file: '/content/personnel/employees.html' },
+                kpi: { title: 'personnel.kpi.title', file: '/content/personnel/kpi.html' },
+                todo: { title: 'personnel.todo.title', file: '/content/personnel/todo.html' }
+            }
+        }
+    };
 
-        // Function to apply translations to the DOM
-        const applyTranslations = () => {
-            document.querySelectorAll('[data-i18n]').forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                if (translations[key]) {
-                    element.textContent = translations[key];
-                }
+    function updateSidebarAndContent(sectionKey) {
+        const section = sections[sectionKey];
+        if (!section) return;
+
+        const sidebarContent = document.getElementById('sidebar-content');
+        const mainContent = document.getElementById('main-content-area');
+
+        sidebarContent.innerHTML = `
+        <h4 data-i18n="${section.title}"></h4>
+        <div class="d-flex flex-column gap-1">
+          ${Object.entries(section.subsections).map(([key, val]) => `
+            <button class="btn btn-subsection" data-subsection="${key}" data-i18n="${val.title}"></button>
+          `).join('')}
+        </div>
+      `;
+        mainContent.innerHTML = `
+        <div class="row animate__animated animate__fadeIn" id="${sectionKey}-content">
+          <div class="col-md-12">
+            <h2 data-i18n="${section.title}"></h2>
+            <p>Select a subsection to view details.</p>
+          </div>
+        </div>
+      `;
+
+        i18n.applyTranslations();
+
+        const buttons = sidebarContent.querySelectorAll('.btn-subsection');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const key = button.getAttribute('data-subsection');
+                const subsection = section.subsections[key];
+                fetch(subsection.file)
+                    .then(r => r.text())
+                    .then(html => {
+                        mainContent.innerHTML = `
+                <div class="row animate__animated animate__fadeIn">
+                  <div class="col-md-12">
+                    <h2 data-i18n="${subsection.title}"></h2>
+                    ${html}
+                  </div>
+                </div>
+              `;
+                        i18n.applyTranslations();
+                    });
+                buttons.forEach(b => b.classList.remove('active'));
+                button.classList.add('active');
             });
-            // Update HTML lang attribute
-            document.documentElement.lang = currentLang === 'nob' ? 'no' : currentLang;
-        };
+        });
+    }
 
-        // Function to update sidebar and main content
-        const updateSidebarAndContent = (section) => {
-            const { title, description, subsections } = sections[section];
-
-            // Update sidebar with subsection buttons
-            sidebarContent.innerHTML = `
-                <h4 data-i18n="${title}">${translations[title]}</h4>
-                <p data-i18n="${description}">${translations[description]}</p>
-                <div class="d-flex flex-column gap-1">
-                    ${Object.entries(subsections).map(([key, value]) => `
-                        <button class="btn btn-subsection" data-subsection="${key}">
-                            <i class="fas ${value.icon} me-1"></i>
-                            <span data-i18n="subsection_${key}">${translations[`subsection_${key}`] || value.title}</span>
-                        </button>
-                    `).join('')}
-                </div>
-            `;
-
-            // Update main content with section description initially
-            mainContentArea.innerHTML = `
-                <div class="row animate__animated animate__fadeIn" id="${section}-content">
-                    <div class="col-md-12">
-                        <h2 data-i18n="${title}">${translations[title]}</h2>
-                        <p data-i18n="${description}">${translations[description]}</p>
-                    </div>
-                </div>
-            `;
-
-            // Add click listeners to subsection buttons
-            const subsectionButtons = sidebarContent.querySelectorAll('.btn-subsection');
-            subsectionButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const subsectionKey = btn.getAttribute('data-subsection');
-                    mainContentArea.innerHTML = `
-                        <div class="row animate__animated animate__fadeIn" id="${subsectionKey}-content">
-                            <div class="col-md-12">
-                                <h2 data-i18n="subsection_${subsectionKey}">${translations[`subsection_${subsectionKey}`]}</h2>
-                                <p data-i18n="subsection_${subsectionKey}_description">${translations[`subsection_${subsectionKey}_description`]}</p>
-                            </div>
-                        </div>
-                    `;
-                    subsectionButtons.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    applyTranslations();
+    document.addEventListener('DOMContentLoaded', () => {
+        const savedLang = localStorage.getItem('lang') || 'nob';
+        i18n.loadLanguage(savedLang).then(() => {
+            return Promise.all([
+                loadComponent("/components.html", "#navbar", "nav"),
+                loadComponent("/components.html", "#footer", "footer")
+            ]);
+        }).then(() => {
+            const navCards = document.querySelectorAll('.nav-card');
+            navCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const section = card.getAttribute('data-section');
+                    updateSidebarAndContent(section);
+                    navCards.forEach(c => c.classList.remove('active'));
+                    card.classList.add('active');
                 });
             });
-
-            applyTranslations();
-        };
-
-        const sections = {
-            salg: {
-                title: 'salg',
-                description: 'salg_description',
-                subsections: {
-                    markedsforing: { title: 'Markedsføring', icon: 'fa-bullhorn' },
-                    prospekter: { title: 'Prospekter', icon: 'fa-address-book' },
-                    crm: { title: 'CRM', icon: 'fa-users-cog' },
-                    foresporsel: { title: 'Forespørsel', icon: 'fa-question-circle' },
-                    tilbud: { title: 'Tilbud', icon: 'fa-file-invoice' },
-                    kpiSales: { title: 'KPI Sales', icon: 'fa-chart-line' },
-                    salgordre: { title: 'Salgordre', icon: 'fa-shopping-bag' },
-                    kundekontakt: { title: 'Kundekontakt', icon: 'fa-phone' }
-                }
-            },
-            innkjop: {
-                title: 'innkjop',
-                description: 'innkjop_description',
-                subsections: {
-                    revisjoner: { title: 'Revisjoner', icon: 'fa-search' },
-                    innkjopsordre: { title: 'Innkjøpsordre', icon: 'fa-file-alt' },
-                    ordrebekreftelse: { title: 'Ordrebekreftelse', icon: 'fa-check-circle' },
-                    leverandorforhold: { title: 'Leverandørforhold', icon: 'fa-handshake' },
-                    diversebilag: { title: 'Diversebilag', icon: 'fa-folder-open' },
-                    kpiInnkjoo: { title: 'KPI Innkjøp', icon: 'fa-chart-bar' }
-                }
-            },
-            produksjon: {
-                title: 'produksjon',
-                description: 'produksjon_description',
-                subsections: {
-                    prosjekter: { title: 'Prosjekter', icon: 'fa-project-diagram' },
-                    hms: { title: 'HMS', icon: 'fa-shield-alt' },
-                    kpiProduksjon: { title: 'KPI Produksjon', icon: 'fa-tachometer-alt' },
-                    undersokelser: { title: 'Undersøkelser', icon: 'fa-clipboard-check' },
-                    transport: { title: 'Transport', icon: 'fa-truck' }
-                }
-            },
-            ressurser: {
-                title: 'ressurser',
-                description: 'ressurser_description',
-                subsections: {
-                    resourcePlanning: { title: 'Resource Planning', icon: 'fa-calendar-alt' },
-                    biler: { title: 'Biler', icon: 'fa-car' },
-                    eiendommer: { title: 'Eiendommer', icon: 'fa-building' }
-                }
-            },
-            lager: {
-                title: 'lager',
-                description: 'lager_description',
-                subsections: {
-                    varer: { title: 'Varer', icon: 'fa-boxes' },
-                    varemottak: { title: 'Varemottak', icon: 'fa-truck-loading' },
-                    fraktbrev: { title: 'Fraktbrev', icon: 'fa-file-alt' },
-                    plukkliste: { title: 'Plukkliste', icon: 'fa-clipboard-list' },
-                    lager: { title: 'Lager', icon: 'fa-warehouse' }
-                }
-            },
-            personel: {
-                title: 'personel',
-                description: 'personel_description',
-                subsections: {
-                    tidrapportering: { title: 'Tidrapportering', icon: 'fa-clock' },
-                    kjorebok: { title: 'Kjorebok', icon: 'fa-road' },
-                    ansatte: { title: 'Ansatte', icon: 'fa-users' },
-                    kpiTid: { title: 'KPI Tid', icon: 'fa-stopwatch' },
-                    todoList: { title: 'Todo List', icon: 'fa-tasks' }
-                }
-            }
-        };
-
-        const navCards = document.querySelectorAll('.nav-card');
-        const sidebarContent = document.getElementById('sidebar-content');
-        const mainContentArea = document.getElementById('main-content-area');
-
-        navCards.forEach(card => {
-            card.addEventListener('click', () => {
-                const section = card.getAttribute('data-section');
-                updateSidebarAndContent(section);
-                navCards.forEach(c => c.classList.remove('active'));
-                card.classList.add('active');
-            });
+            if (navCards.length > 0) navCards[0].click();
         });
-
-        // Language selection handler
-        document.addEventListener('click', (e) => {
-            if (e.target.closest('.language-select')) {
-                e.preventDefault();
-                const lang = e.target.closest('.language-select').getAttribute('data-lang');
-                localStorage.setItem('language', lang);
-                currentLang = lang;
-                loadTranslations(lang);
-                updateSidebarAndContent(document.querySelector('.nav-card.active')?.getAttribute('data-section') || 'salg');
-            }
-        });
-
-        // Load initial translations
-        loadTranslations(currentLang);
-
-        // Trigger first section on load
-        navCards[0].click();
     });
 </script>
 </body>
