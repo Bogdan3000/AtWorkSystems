@@ -47,5 +47,18 @@
   "sales.marketing.description": "Планируйте и проводите кампании для привлечения новых клиентов и увеличения продаж.",
   "sales.marketing.point1": "Таргетинг в социальных сетях",
   "sales.marketing.point2": "Кампании по электронной почте",
-  "sales.marketing.point3": "Конверсия лидов"
+  "sales.marketing.point3": "Конверсия лидов",
+
+  "nav.blog": "Блог",
+  "nav.about": "О нас",
+  "nav.contact": "Контакты",
+  "nav.lang.nob": "Норвежский",
+  "nav.lang.en": "Английский",
+  "nav.lang.sp": "Испанский",
+  "nav.lang.ru": "Русский",
+
+  "footer.copyright": "Авторские права © At Work Systems AS 2025",
+  "footer.privacy": "Конфиденциальность",
+  "footer.terms": "Условия",
+  "footer.admin": "Админ"
 }

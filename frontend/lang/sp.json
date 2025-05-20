@@ -47,5 +47,18 @@
   "sales.marketing.description": "Planificar y ejecutar campañas para llegar a nuevos clientes y aumentar las ventas.",
   "sales.marketing.point1": "Segmentación en redes sociales",
   "sales.marketing.point2": "Campañas de correo electrónico",
-  "sales.marketing.point3": "Conversión de clientes potenciales"
+  "sales.marketing.point3": "Conversión de clientes potenciales",
+
+  "nav.blog": "Blog",
+  "nav.about": "Sobre nosotros",
+  "nav.contact": "Contacto",
+  "nav.lang.nob": "Noruego",
+  "nav.lang.en": "Inglés",
+  "nav.lang.sp": "Español",
+  "nav.lang.ru": "Ruso",
+
+  "footer.copyright": "Copyright © At Work Systems AS 2025",
+  "footer.privacy": "Privacidad",
+  "footer.terms": "Términos",
+  "footer.admin": "Administrador"
 }

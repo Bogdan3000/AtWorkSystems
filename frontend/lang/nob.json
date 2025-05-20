@@ -47,5 +47,18 @@
   "sales.marketing.description": "Planlegg og gjennomfør kampanjer for å nå nye kunder og øke salget.",
   "sales.marketing.point1": "Målretting på sosiale medier",
   "sales.marketing.point2": "E-postkampanjer",
-  "sales.marketing.point3": "Leads-konvertering"
+  "sales.marketing.point3": "Leads-konvertering",
+
+  "nav.blog": "Blogg",
+  "nav.about": "Om oss",
+  "nav.contact": "Kontakt",
+  "nav.lang.nob": "Norsk",
+  "nav.lang.en": "Engelsk",
+  "nav.lang.sp": "Spansk",
+  "nav.lang.ru": "Russisk",
+
+  "footer.copyright": "Opphavsrett © At Work Systems AS 2025",
+  "footer.privacy": "Personvern",
+  "footer.terms": "Vilkår",
+  "footer.admin": "Admin"
 }

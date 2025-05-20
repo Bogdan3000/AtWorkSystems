@@ -48,6 +48,20 @@
   "sales.marketing.description": "Plan and execute marketing campaigns to reach new customers and increase sales.",
   "sales.marketing.point1": "Social media targeting",
   "sales.marketing.point2": "Email campaigns",
-  "sales.marketing.point3": "Lead conversion funnels"
+  "sales.marketing.point3": "Lead conversion funnels",
+
+
+  "nav.blog": "Blog",
+  "nav.about": "About Us",
+  "nav.contact": "Contact",
+  "nav.lang.nob": "Norwegian",
+  "nav.lang.en": "English",
+  "nav.lang.sp": "Spanish",
+  "nav.lang.ru": "Russian",
+
+  "footer.copyright": "Copyright © At Work Systems AS 2025",
+  "footer.privacy": "Privacy",
+  "footer.terms": "Terms",
+  "footer.admin": "Admin"
 
 }
