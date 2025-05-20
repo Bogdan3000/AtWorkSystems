@@ -1,0 +1,46 @@
+<!-- Shared navigation and footer components for At Work Systems website -->
+<!-- Navbar: Responsive navigation bar with language dropdown -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container px-5">
+    <a class="navbar-brand" href="/index.html">At Work Systems</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="/pages/blog-home.html" data-i18n="blog">Blogg</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pages/about.html" data-i18n="about">Om oss</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pages/contact-us.html" data-i18n="contact">Kontakt oss</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownLanguage" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-globe me-1"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownLanguage">
+            <li><a class="dropdown-item language-select" href="#" data-lang="nob"><span class="fi fi-no me-2"></span>Norwegian</a></li>
+            <li><a class="dropdown-item language-select active" href="#" data-lang="en"><span class="fi fi-gb me-2"></span>English</a></li>
+            <li><a class="dropdown-item language-select" href="#" data-lang="sp"><span class="fi fi-es me-2"></span>Spanish</a></li>
+            <li><a class="dropdown-item language-select" href="#" data-lang="ru"><span class="fi fi-ru me-2"></span>Russian</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Footer: Displays copyright and links to privacy, terms, and admin pages -->
+<footer class="bg-dark py-4 mt-auto">
+  <div class="container px-5">
+    <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+      <div class="col-auto">
+        <div class="small m-0 text-white">Copyright &copy; At Work Systems AS 2025</div>
+      </div>
+      <div class="col-auto">
+        <a class="link-light small" href="#">Privacy</a>
+        <span class="text-white mx-1">&middot;</span>
+        <a class="link-light small" href="#">Terms</a>
+        <span class="text-white mx-1">&middot;</span>
+        <a class="link-light small" href="#">Admin</a>
+      </div>
+    </div>
+  </div>
+</footer>
