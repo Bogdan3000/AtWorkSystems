@@ -8,7 +8,6 @@
   "sales.kpi.title": "KPI",
   "sales.orders.title": "Orders",
   "sales.contact.title": "Customer Contact",
-
   "purchasing.title": "Purchasing",
   "purchasing.audits.title": "Audits",
   "purchasing.orders.title": "Purchase Orders",
@@ -16,41 +15,33 @@
   "purchasing.suppliers.title": "Suppliers",
   "purchasing.misc.title": "Miscellaneous",
   "purchasing.kpi.title": "KPI",
-
   "production.title": "Production",
   "production.projects.title": "Projects",
   "production.hse.title": "HSE",
   "production.kpi.title": "KPI",
   "production.surveys.title": "Surveys",
   "production.transport.title": "Transport",
-
   "resources.title": "Resources",
   "resources.planning.title": "Planning",
   "resources.vehicles.title": "Vehicles",
   "resources.properties.title": "Properties",
-
   "inventory.title": "Inventory",
   "inventory.goods.title": "Goods",
   "inventory.receipt.title": "Goods Receipt",
   "inventory.freight.title": "Freight Bill",
   "inventory.picklist.title": "Pick List",
   "inventory.overview.title": "Inventory Overview",
-
   "personnel.title": "Personnel",
   "personnel.time.title": "Time Reporting",
   "personnel.logbook.title": "Travel Log",
   "personnel.employees.title": "Employees",
   "personnel.kpi.title": "KPI",
   "personnel.todo.title": "Todo List",
-
-
   "sales.marketing.heading": "Marketing Tools",
   "sales.marketing.description": "Plan and execute marketing campaigns to reach new customers and increase sales.",
   "sales.marketing.point1": "Social media targeting",
   "sales.marketing.point2": "Email campaigns",
   "sales.marketing.point3": "Lead conversion funnels",
-
-
   "nav.blog": "Blog",
   "nav.about": "About Us",
   "nav.contact": "Contact",
@@ -58,10 +49,23 @@
   "nav.lang.en": "English",
   "nav.lang.sp": "Spanish",
   "nav.lang.ru": "Russian",
-
   "footer.copyright": "Copyright © At Work Systems AS 2025",
   "footer.privacy": "Privacy",
   "footer.terms": "Terms",
-  "footer.admin": "Admin"
-
+  "footer.admin": "Admin",
+  "contact.title": "Contact Us",
+  "contact.description": "We'd love to hear from you. Select your topics of interest and fill out the form below.",
+  "contact.firstName": "First Name",
+  "contact.firstNameError": "First name is required.",
+  "contact.lastName": "Last Name",
+  "contact.lastNameError": "Last name is required.",
+  "contact.email": "Email Address",
+  "contact.emailError": "A valid email is required.",
+  "contact.phone": "Phone Number",
+  "contact.phoneError": "A phone number is required.",
+  "contact.categories": "Categories of Interest",
+  "contact.categoriesError": "At least one category or subcategory is required.",
+  "contact.submit": "Submit",
+  "contact.success": "Thank you! Your message has been sent.",
+  "contact.selectedTopics": "Selected Topics"
 }
