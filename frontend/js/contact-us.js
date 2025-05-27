@@ -1,6 +1,6 @@
-import { i18n } from './i18n.js';
-import { loadComponent } from './components.js';
-import { sections } from './sections.js';
+import { i18n } from '../js/i18n.js';
+import { loadComponent } from '../js/components.js';
+import { sections } from '../js/sections.js';
 
 // Initialize navbar and footer
 async function initializeComponents() {
@@ -9,9 +9,23 @@ async function initializeComponents() {
             loadComponent('/components.html', '#navbar', 'nav'),
             loadComponent('/components.html', '#footer', 'footer')
         ]);
+        // Initialize Bootstrap components
+        if (typeof bootstrap !== 'undefined') {
+            document.querySelectorAll('.navbar-toggler').forEach(toggler => {
+                const target = toggler.dataset.bsTarget || toggler.getAttribute('data-target') || '#navbarNav';
+                new bootstrap.Collapse(document.querySelector(target), { toggle: false });
+            });
+            document.querySelectorAll('.dropdown-toggle').forEach(dropdown => {
+                new bootstrap.Dropdown(dropdown);
+            });
+        } else {
+            console.warn('Bootstrap is not defined. Ensure Bootstrap JS is loaded.');
+        }
         i18n.applyTranslations();
+        console.log('Components initialized successfully');
     } catch (error) {
         console.error('Error loading components:', error);
+        throw error;
     }
 }
 
@@ -21,30 +35,36 @@ function populateCategories() {
     const subcategoriesContainer = document.getElementById('subcategories-container');
     const selectedTopics = document.getElementById('selected-topics');
 
-    // Store selected subsections to preserve state
+    // Store selected states
     let selectedSubcategories = new Set();
+    let selectedCategories = new Set();
 
-    // Populate categories as toggleable buttons
+    // Render categories as toggleable buttons
     function renderCategories() {
-        categoriesContainer.innerHTML = Object.entries(sections).map(([sectionKey, section]) => `
-            <button type="button" class="category-button" data-section="${sectionKey}" data-i18n="${section.title}">
-                ${i18n.translations[section.title] || section.title}
-            </button>
-        `).join('');
+        categoriesContainer.innerHTML = Object.entries(sections).map(([sectionKey, section]) => {
+            const isActive = selectedCategories.has(sectionKey) ? 'active' : '';
+            return `
+                <button type="button" class="category-button ${isActive}" data-section="${sectionKey}" data-i18n="${section.title}">
+                    ${i18n.translations[section.title] || section.title}
+                </button>
+            `;
+        }).join('');
     }
 
     // Update subcategories based on selected categories
     function updateSubcategories() {
-        const selectedCategories = Array.from(categoriesContainer.querySelectorAll('.category-button.active')).map(button => button.getAttribute('data-section'));
+        selectedCategories = new Set(
+            Array.from(categoriesContainer.querySelectorAll('.category-button.active')).map(button => button.getAttribute('data-section'))
+        );
 
-        // Preserve current selections
+        // Preserve current subcategory selections
         const currentSelections = new Set();
         document.querySelectorAll('input[name="subcategories"]:checked').forEach(checkbox => {
             currentSelections.add(`${checkbox.getAttribute('data-section')}:${checkbox.getAttribute('data-subsection')}`);
         });
         selectedSubcategories = new Set([...selectedSubcategories, ...currentSelections]);
 
-        subcategoriesContainer.innerHTML = selectedCategories.map(sectionKey => {
+        subcategoriesContainer.innerHTML = Array.from(selectedCategories).map(sectionKey => {
             const section = sections[sectionKey];
             return `
                 <div class="subcategory-group">
@@ -71,13 +91,13 @@ function populateCategories() {
 
     // Update selected topics display
     function updateSelectedTopics() {
-        const selectedCategories = Array.from(categoriesContainer.querySelectorAll('.category-button.active')).map(button => i18n.translations[button.getAttribute('data-i18n')] || button.getAttribute('data-section'));
+        const selectedCategoriesArray = Array.from(categoriesContainer.querySelectorAll('.category-button.active')).map(button => i18n.translations[button.getAttribute('data-i18n')] || button.getAttribute('data-section'));
         const selectedSubcategoriesArray = Array.from(document.querySelectorAll('input[name="subcategories"]:checked')).map(checkbox => {
             const sectionKey = checkbox.getAttribute('data-section');
             const subKey = checkbox.getAttribute('data-subsection');
             return i18n.translations[sections[sectionKey].subsections[subKey].title] || subKey;
         });
-        const allSelected = [...selectedCategories, ...selectedSubcategoriesArray];
+        const allSelected = [...selectedCategoriesArray, ...selectedSubcategoriesArray];
         selectedTopics.innerHTML = allSelected.length > 0
             ? `<span data-i18n="contact.selectedTopics">Selected Topics:</span> ${allSelected.join(', ')}`
             : '';
@@ -166,7 +186,6 @@ document.getElementById('contact-form').addEventListener('submit', async (e) => 
     };
 
     try {
-        // Simulate API call
         await new Promise(resolve => setTimeout(resolve, 1000));
         e.target.reset();
         document.querySelectorAll('.category-button.active').forEach(button => button.classList.remove('active'));
@@ -182,27 +201,58 @@ document.getElementById('contact-form').addEventListener('submit', async (e) => 
     }
 });
 
-// Initialize
+// Initialize and set up event listeners
 document.addEventListener('DOMContentLoaded', async () => {
+    let refreshCategories;
     try {
         await i18n.loadLanguage(localStorage.getItem('lang') || 'nob');
         await initializeComponents();
-        const { refresh } = populateCategories();
+        refreshCategories = populateCategories().refresh;
 
-        // Listen for language changes
-        document.addEventListener('click', async (e) => {
-            const langSwitch = e.target.closest('.lang-switch');
-            if (langSwitch) {
-                const lang = langSwitch.getAttribute('data-lang');
-                try {
-                    await i18n.loadLanguage(lang);
-                    i18n.applyTranslations();
-                    refresh(); // Refresh categories and subsections with new language
-                } catch (error) {
-                    console.error('Error switching language:', error);
+        // Language switching with broader selector
+        document.body.addEventListener('click', async (e) => {
+            const langElement = e.target.closest('[data-lang], .lang-switch, .dropdown-item');
+            if (langElement) {
+                e.preventDefault();
+                const lang = langElement.getAttribute('data-lang') || langElement.dataset.lang;
+                if (lang) {
+                    try {
+                        console.log(`Switching to language: ${lang}`);
+                        await i18n.loadLanguage(lang);
+                        localStorage.setItem('lang', lang);
+                        i18n.applyTranslations();
+                        refreshCategories();
+                        const navbar = document.getElementById('navbar');
+                        const footer = document.getElementById('footer');
+                        if (navbar) i18n.applyTranslations(navbar);
+                        if (footer) i18n.applyTranslations(footer);
+                    } catch (error) {
+                        console.error(`Error switching to language ${lang}:`, error);
+                    }
                 }
             }
         });
+
+        // Ensure Bootstrap components are initialized after dynamic load
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach(() => {
+                if (document.querySelector('.navbar-toggler')) {
+                    if (typeof bootstrap !== 'undefined') {
+                        document.querySelectorAll('.navbar-toggler').forEach(toggler => {
+                            const target = toggler.dataset.bsTarget || toggler.getAttribute('data-target') || '#navbarNav';
+                            new bootstrap.Collapse(document.querySelector(target), { toggle: false });
+                        });
+                        document.querySelectorAll('.dropdown-toggle').forEach(dropdown => {
+                            new bootstrap.Dropdown(dropdown);
+                        });
+                    } else {
+                        console.warn('Bootstrap is not defined after mutation.');
+                    }
+                }
+            });
+        });
+        observer.observe(document.getElementById('navbar'), { childList: true, subtree: true });
+
     } catch (error) {
         console.error('Initialization error:', error);
     }
